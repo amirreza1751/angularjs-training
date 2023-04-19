@@ -39,7 +39,12 @@ myApp.controller('mainController', ['$scope', '$log', 'nameService',
 
     $scope.person = {
         name: 'A',
-        address: 'B'
+        address: 'B',
+        city: 'C',
+        zip: 'D'
+    }
+    $scope.formattedAddress = function (person){
+        return person.address + ', ' + person.city + ', ' + person.zip;
     }
 }]);
 
@@ -60,7 +65,8 @@ myApp.directive('searchResult', function (){
         templateUrl: 'pages/search-result.html',
         replace: true,
         scope: {
-            personObject: '='
+            personObject: '=',
+            formattedAddress: '&'
         }
     }
 });
