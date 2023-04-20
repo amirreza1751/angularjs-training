@@ -37,12 +37,28 @@ myApp.controller('mainController', ['$scope', '$log', 'nameService',
     $log.info(nameService.name);
     $log.info(nameService.nameLength());
 
-    $scope.person = {
-        name: 'A',
-        address: 'B',
-        city: 'C',
-        zip: 'D'
-    }
+    $scope.people =[
+        {
+            name: 'A',
+            address: 'B',
+            city: 'C',
+            zip: 'D'
+        },
+
+        {
+            name: 'AA',
+            address: 'BB',
+            city: 'CC',
+            zip: 'DD'
+        },
+
+        {
+            name: 'AAA',
+            address: 'BBB',
+            city: 'CCC',
+            zip: 'DDD'
+        },
+    ]
     $scope.formattedAddress = function (person){
         return person.address + ', ' + person.city + ', ' + person.zip;
     }
@@ -65,7 +81,7 @@ myApp.directive('searchResult', function (){
         templateUrl: 'pages/search-result.html',
         replace: true,
         scope: {
-            personObject: '=',
+            people: '=',
             formattedAddress: '&'
         }
     }
