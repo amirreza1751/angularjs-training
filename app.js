@@ -84,15 +84,18 @@ myApp.directive('searchResult', function (){
         // template: '<a><h3>Item: 1</h3><p>Description</p></a>',
         templateUrl: 'pages/search-result.html',
         replace: true,
+        transclude: true,
         scope: {
             person: '=',
             formattedAddress: '&'
         },
         link: function (scope, element, attrs){
-            // if (scope.person.name === 'AAA'){
-            //     element.classList.add("alert", "alert-danger");
-            // }
-            console.log(scope)
+            if (scope.person.name === 'John Doe'){
+                element.addClass("btn-success");
+            } else {
+                element.addClass("btn-danger");
+            }
+
         }
     }
 });
