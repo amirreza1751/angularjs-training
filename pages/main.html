@@ -10,13 +10,15 @@
 <!--&gt;-->
 <!--</search-result>-->
 
-<search-result
-        ng-repeat="person in people"
-        person-object="person"
-        formatted-address="formattedAddress(person)"
->
-</search-result>
+<div class="list-group">
+    <search-result
+            ng-repeat="person in people"
+            person="person"
+            formatted-address="formattedAddress(person)"
+    >
+    </search-result>
 
 
+</div>
 
 <!--<div search-result> </div>-->

@@ -37,36 +37,40 @@ myApp.controller('mainController', ['$scope', '$log', 'nameService',
     $log.info(nameService.name);
     $log.info(nameService.nameLength());
 
-    $scope.people =[
-        {
-            name: 'A',
-            address: 'B',
-            city: 'C',
-            zip: 'D'
-        },
+        $scope.people = [
+            {
+                name: 'John Doe',
+                address: '555 Main St.',
+                city: 'New York',
+                state: 'NY',
+                zip: '11111'
+            },
+            {
+                name: 'Jane Doe',
+                address: '333 Second St.',
+                city: 'Buffalo',
+                state: 'NY',
+                zip: '22222'
+            },
+            {
+                name: 'George Doe',
+                address: '111 Third St.',
+                city: 'Miami',
+                state: 'FL',
+                zip: '33333'
+            }
+        ]
 
-        {
-            name: 'AA',
-            address: 'BB',
-            city: 'CC',
-            zip: 'DD'
-        },
+        $scope.formattedAddress = function(person) {
 
-        {
-            name: 'AAA',
-            address: 'BBB',
-            city: 'CCC',
-            zip: 'DDD'
-        },
-    ]
-    $scope.formattedAddress = function (person){
-        return person.address + ', ' + person.city + ', ' + person.zip;
-    }
+            return person.address + ', ' + person.city + ', ' + person.state + ' ' + person.zip;
+
+        };
 }]);
 
 myApp.controller('secondController', ['$scope', '$log', '$routeParams', 'nameService',
     function($scope, $log, $routeParam, nameService) {
-    $scope.name = 'second';
+    // $scope.name = 'second';
     $scope.$watch('name', function (){
         nameService.name = $scope.name;
     });
@@ -81,8 +85,14 @@ myApp.directive('searchResult', function (){
         templateUrl: 'pages/search-result.html',
         replace: true,
         scope: {
-            people: '=',
+            person: '=',
             formattedAddress: '&'
+        },
+        link: function (scope, element, attrs){
+            // if (scope.person.name === 'AAA'){
+            //     element.classList.add("alert", "alert-danger");
+            // }
+            console.log(scope)
         }
     }
 });
